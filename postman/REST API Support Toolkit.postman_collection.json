@@ -1,0 +1,315 @@
+{
+  "info": {
+    "_collection_link": "https://go.postman.co/collection/60022884-e4a1a711-72fd-4397-b9fc-d628d4c1e9cb?source=collection_link",
+    "_exporter_id": "60022884",
+    "_postman_id": "e4a1a711-72fd-4397-b9fc-d628d4c1e9cb",
+    "name": "REST API Support Toolkit",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"HTTP status is 200 OK\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Response contains correct user ID\", function () {\n    const jsonData = pm.response.json();\n    pm.expect(jsonData.id).to.eql(1);\n});\n\npm.test(\"Response contains user email\", function () {\n    const jsonData = pm.response.json();\n    pm.expect(jsonData.email).to.be.a(\"string\");\n});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "name": "GET - Retrieve User Details",
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": {
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "users",
+            "1"
+          ],
+          "protocol": "https",
+          "raw": "https://jsonplaceholder.typicode.com/users/1"
+        }
+      },
+      "response": [
+        {
+          "_postman_previewlanguage": "json",
+          "body": "{\n  \"id\": 1,\n  \"name\": \"Leanne Graham\",\n  \"username\": \"Bret\",\n  \"email\": \"Sincere@april.biz\",\n  \"address\": {\n    \"street\": \"Kulas Light\",\n    \"suite\": \"Apt. 556\",\n    \"city\": \"Gwenborough\",\n    \"zipcode\": \"92998-3874\",\n    \"geo\": {\n      \"lat\": \"-37.3159\",\n      \"lng\": \"81.1496\"\n    }\n  },\n  \"phone\": \"1-770-736-8031 x56442\",\n  \"website\": \"hildegard.org\",\n  \"company\": {\n    \"name\": \"Romaguera-Crona\",\n    \"catchPhrase\": \"Multi-layered client-server neural-net\",\n    \"bs\": \"harness real-time e-markets\"\n  }\n}",
+          "cookie": [],
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "date",
+              "value": "Sat, 07 Nov 2026 11:05:20 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "access-control-allow-credentials",
+              "value": "true"
+            },
+            {
+              "key": "cache-control",
+              "value": "max-age=43200"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"1fd-+2Y3G3w049iSZtw5t1mzSnunngE\""
+            },
+            {
+              "key": "expires",
+              "value": "-1"
+            },
+            {
+              "key": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "vary",
+              "value": "Origin, Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "3600000"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "3598094"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1791674335"
+            },
+            {
+              "key": "report-to",
+              "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=v%2FIQm3OpQmqRltmmLmq6DnTh%2BCAPF4RbdRuEkKLcC7lvPGJogv1ZuRk0YToLEbXSDJwhP3kdeY4gTIAyijAW2ob5u9xsZnFVe6fP7FaY3A6ihq90%2FSuLIrzjs%2FJ1amkp2g6h8WfNoaXx2xjek5IE\"}]}"
+            },
+            {
+              "key": "nel",
+              "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+            },
+            {
+              "key": "age",
+              "value": "1704"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "HIT"
+            },
+            {
+              "key": "content-encoding",
+              "value": "br"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "cf-ray",
+              "value": "a56bdcbcac2bbbf9-ZRH"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "name": "GET - Retrieve User Details",
+          "originalRequest": {
+            "header": [],
+            "method": "GET",
+            "url": {
+              "host": [
+                "jsonplaceholder",
+                "typicode",
+                "com"
+              ],
+              "path": [
+                "users",
+                "1"
+              ],
+              "protocol": "https",
+              "raw": "https://jsonplaceholder.typicode.com/users/1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"API returns HTTP 404\", function () {\n    pm.response.to.have.status(404);\n});\n\npm.test(\"Response is valid JSON\", function () {\n    pm.response.to.be.json;\n});\n\npm.test(\"User not found returns empty object\", function () {\n    const response = pm.response.json();\n    pm.expect(response).to.deep.equal({});\n});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "name": "GET - Troubleshoot User Not Found",
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": {
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "users",
+            "99999"
+          ],
+          "protocol": "https",
+          "raw": "https://jsonplaceholder.typicode.com/users/99999"
+        }
+      },
+      "response": []
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"HTTP status is 200 OK\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Authentication is successful\", function () {\n    const response = pm.response.json();\n    pm.expect(response.authenticated).to.eql(true);\n});\n\npm.test(\"Bearer token is correctly received\", function () {\n    const response = pm.response.json();\n    pm.expect(response.token).to.eql(\"demo-support-token-123\");\n});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "name": "GET - Authentication Troubleshooting",
+      "request": {
+        "auth": {
+          "bearer": [
+            {
+              "key": "token",
+              "type": "string",
+              "value": "{{auth_secret_0kuf}}"
+            }
+          ],
+          "type": "bearer"
+        },
+        "header": [],
+        "method": "GET",
+        "url": {
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "bearer"
+          ],
+          "protocol": "https",
+          "raw": "https://httpbin.org/bearer"
+        }
+      },
+      "response": [
+        {
+          "_postman_previewlanguage": "json",
+          "body": "{\n  \"authenticated\": true,\n  \"token\": \"demo-support-token-123\"\n}",
+          "cookie": [],
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "access-control-allow-credentials",
+              "value": "true"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "access-control-expose-headers",
+              "value": "Retry-After, RateLimit, RateLimit-Policy"
+            },
+            {
+              "key": "content-length",
+              "value": "65"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "date",
+              "value": "Sat, 07 Nov 2026 11:48:58 GMT"
+            }
+          ],
+          "name": "GET - Authentication Troubleshooting",
+          "originalRequest": {
+            "header": [],
+            "method": "GET",
+            "url": {
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "bearer"
+              ],
+              "protocol": "https",
+              "raw": "https://httpbin.org/bearer"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"HTTP status is 401 Unauthorized\", function () {\n    pm.response.to.have.status(401);\n});\n\npm.test(\"Authentication request is rejected\", function () {\n    pm.expect(pm.response.code).to.eql(401);\n});\n\npm.test(\"Response does not contain authenticated user data\", function () {\n    const response = pm.response.text();\n    pm.expect(response).to.not.include('\"authenticated\": true');\n});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "name": "GET - Authentication Missing Token (401)",
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": {
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "bearer"
+          ],
+          "protocol": "https",
+          "raw": "https://httpbin.org/bearer"
+        }
+      },
+      "response": []
+    }
+  ]
+}
